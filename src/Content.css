@@ -1,0 +1,68 @@
+.green-bg {
+    min-height: 100vh;
+    background-image: url('./assets/greenbg.jpg');
+    background-size: cover;
+}
+
+.content {
+    display: block;
+}
+
+.home-btn {
+    position:relative;
+    top: 6px;
+    left: 6px;
+    border-radius: 4px;
+    border: 1px solid;
+    border-color: #15ff00;
+    padding: 0.6em 1.2em;
+    font-size: 1em;
+    font-weight: 500;
+    font-family: inherit;
+    background-color: #1e8315;
+    cursor: pointer;
+    transition: border-color 0.25s;
+}
+
+.home-btn:hover {
+  border-color: white;
+}
+.home-btn:focus,
+.home-btn:focus-visible {
+  outline: 4px auto -webkit-focus-ring-color;
+}
+
+.maTitle {
+    position:absolute;
+    top:0px;
+    left: 50%;
+    transform: translateX(-50%);
+    text-shadow: 0px 0px 10px black;
+    font-family:'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+    text-decoration: underline wavy;
+}
+
+.blog-list {
+    text-shadow: 0px 0px 10px black;
+    font-family:'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+    padding-left: 60px;
+    
+    text-shadow: 0px 0px 10px black;
+}
+
+a:visited {
+    color: white;
+}
+
+.year-header {
+    padding-left: 20px;
+    font-family:'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+    text-decoration:underline;
+    text-shadow: 0px 0px 10px black;
+}
+
+.month-header {
+    padding-left: 40px;
+    font-family:'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+    text-shadow: 0px 0px 10px black;
+}

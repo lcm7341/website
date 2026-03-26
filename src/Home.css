@@ -1,0 +1,146 @@
+#root {
+  max-width: 1920px;
+  margin: 0 auto;
+  text-align: left;
+}
+
+.home-bg {
+  min-height: 100vh;
+  background-image: linear-gradient(rgba(0,0,0,0.9), rgba(0,0,0,0.9)), url('./assets/backgroundgrid.jpg');
+  background-size: cover;
+}
+
+.bg {
+  background-image: url('./assets/header.gif');
+  background-size: cover;
+  -webkit-mask-image: linear-gradient(to bottom, black 50%, transparent 100%);
+  mask-image: linear-gradient(to bottom, black 50%, transparent 100%);
+}
+
+@font-face {
+  font-family: SuperMorning; /* set name */
+  src: url('./assets/SuperMorning-ZpZwZ.ttf'); /* url of the font */
+}
+
+@font-face {
+  font-family: Unispace; /* set name */
+  src: url('./assets/Unispace\ Rg.otf'); /* url of the font */
+}
+
+@keyframes header-anim {
+  0% { -webkit-text-stroke: 2px rgb(0, 175, 0);}
+  25% { -webkit-text-stroke: 2px rgb(0, 50, 0);}
+  75% { -webkit-text-stroke: 2px rgb(0, 150, 0);} 
+  100% { -webkit-text-stroke: 2px rgb(0, 175, 0);}
+}
+
+.space {
+  font-family: Unispace;
+  padding-left: 1em;
+  padding-right: 1em;
+  position: fixed;
+  top: 135px;
+}
+
+.subscript {
+  font-size: 12px;
+}
+
+.bottom-dash {
+  border: 3px dashed greenyellow;
+  border-left-color: transparent;
+  border-top-color: transparent;
+}
+
+.my-stuff {
+  scale: 50%;
+  position: relative;
+  left: -90px;
+  top: 6px;
+}
+
+.developed-by {
+  position: absolute;
+  scale: 50%;
+  left: -50px;
+  bottom: 0px;
+  display: flex;
+}
+
+.name {
+  position: absolute;
+  left: -70px;
+  bottom: -30px;
+  scale: 0.2;
+}
+
+.header {
+  display: flex;
+  border-bottom: 2px dashed green;
+  margin-bottom: 2em;
+  padding: 1rem;
+}
+.header h1 {
+  padding-top: 0.5rem;
+  font-family: SuperMorning;
+  
+  animation-name: header-anim;
+  animation-duration: 10s;
+  animation-iteration-count: infinite;
+}
+
+.powered-by {
+  position: absolute;
+  scale: 50%;
+  left: 250px;
+  bottom: 0px;
+  display: flex;
+}
+
+.react {
+  position: absolute;
+  left: 420px;
+  bottom: -17px;
+  scale: 75%;
+}
+
+.logo {
+  height: 3em;
+  padding: 1.5em;
+  will-change: filter;
+  transition: filter 300ms;
+}
+.logo:hover {
+  filter: drop-shadow(0 0 1em #08f53caa);
+}
+
+@keyframes logo-spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+@media (prefers-reduced-motion: no-preference) {
+   .logo {
+    animation: logo-spin infinite 10s linear;
+  }
+}
+
+@keyframes animation {
+  0% { bottom: 0px; top: 0px; }
+  25% { bottom: 7px; top: 0px; }
+  75% {bottom: 0px; top: 7px; } 
+  100% { bottom: 0px; top: 0px; }
+}
+
+.animated-chars {
+  animation-name: animation;
+  animation-duration: 2s;
+  animation-iteration-count: infinite;
+  position: relative;
+  animation-timing-function: ease;
+  text-shadow: 0px 0px 2px #000000 inset;
+}
