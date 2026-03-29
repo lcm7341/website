@@ -5,18 +5,41 @@ import developed_by from "./assets/developedBy_001.png";
 import powered_by from "./assets/poweredBy_001.png";
 import nametag from "./assets/nametag.png";
 import "./Home.css";
+import { useState } from "react";
+
+function Modal({ isOpen, onClose, children }) {
+  return (
+    <div
+      className={`overlay ${isOpen ? "open" : ""}`}
+      onClick={onClose}
+    >
+      <div
+        className="modal"
+        onClick={(e) => e.stopPropagation()}
+      >
+        {children}
+      </div>
+    </div>
+  );
+}
 
 function Home() {
+  const [open, setOpen] = useState(false);
+
   return (
     <div className="home-bg">
+      <Modal isOpen={open} onClose={() => setOpen(false)} title="Hello">
+        <h2>Crack the code.</h2>
+        <input className="password-field" type="password"></input><button className="submit-guess">Submit</button>
+      </Modal>
       <div className="bg">
         <div className="header">
           <h1>
             <MakeAnimatedCharacters word="Levi's Website" />
           </h1>
           {/* <a href="/other"><img src={gd_cube} className="logo gd_cube" alt="My GD Cube" /></a>*/}
-          <img src={gd_cube} className="logo gd_cube" alt="My GD Cube" />
-          <img src={my_stuff} className="my-stuff" />
+          <button className="cube_button" onClick={() => setOpen(true)}><img src={gd_cube} className="logo gd_cube" alt="My GD Cube" /></button>
+          <img src={my_stuff} className="my-stuff"></img>
         </div>
       </div>
 

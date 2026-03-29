@@ -4,6 +4,74 @@
   text-align: left;
 }
 
+.overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 999;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  background: rgba(0, 0, 0, 0);
+  backdrop-filter: blur(0px);
+  -webkit-backdrop-filter: blur(0px);
+
+  opacity: 0;
+  pointer-events: none;
+
+  transition:
+    backdrop-filter 0.6s ease,
+    -webkit-backdrop-filter 0.6s ease,
+    background 0.6s ease,
+    opacity 0.6s ease;
+}
+
+.overlay.open {
+  background: rgba(0, 0, 0, 0.3);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+
+  opacity: 1;
+  pointer-events: auto;
+}
+
+.modal {
+  background: black;
+  padding: 24px;
+  border-radius: 12px;
+
+  transform: scale(0.95);
+  opacity: 0;
+
+  transition: transform 0.5s ease, opacity 0.5s ease;
+}
+
+.overlay.open .modal {
+  transform: scale(1);
+  opacity: 1;
+}
+
+.password-field {
+  background-color: transparent;
+  border-radius: 20px;
+  border-width: 2px;
+  border-color: white;
+  border-style:groove;
+}
+
+.submit-guess {
+  background-color: transparent;
+  font-size:16px;
+  border-width: 2px;
+  border-color: white;
+  border-style: groove;
+  margin-left: 10px;
+  border-right:transparent;
+  border-left: transparent;
+  border-top: transparent;
+}
+
 .home-bg {
   min-height: 100vh;
   background-image: linear-gradient(rgba(0,0,0,0.9), rgba(0,0,0,0.9)), url('./assets/backgroundgrid.jpg');
@@ -112,6 +180,16 @@
 }
 .logo:hover {
   filter: drop-shadow(0 0 1em #08f53caa);
+}
+
+.gd_cube {
+  scale: 1.25;
+}
+
+.cube_button {
+  background-color: transparent;
+  size:0px;
+  border: none;
 }
 
 @keyframes logo-spin {
