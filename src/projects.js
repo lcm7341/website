@@ -1,4 +1,5 @@
-// the my stuff page. each one gets /stuff/<slug>
+// the my stuff page. each one gets /stuff/<slug>, the write ups live in writeups.js
+import writeups from "./writeups.js";
 
 const projects = [
   {
@@ -188,5 +189,7 @@ const projects = [
     links: [{ label: "GitHub", href: "https://github.com/lcm7341/WordleBot" }],
   },
 ];
+
+for (const p of projects) Object.assign(p, writeups[p.slug]);
 
 export default projects;
