@@ -49,6 +49,21 @@ const writeups = {
     ],
   },
 
+  weft: {
+    how: [
+      "weft comes in layers. The core crate has zero dependencies and holds math, geometry, colors and input events. The graphics crate records drawing commands into a display list, and a CPU renderer turns that list into pixels: paths, strokes, gradients, shadows and images, blended in premultiplied color.",
+      "The text crate parses OpenType fonts, rasterizes and caches glyphs, and shapes text with the GSUB and GPOS tables that handle ligatures and kerning. It handles right-to-left text and line breaking too. The UI crate is immediate-mode: your code describes the interface each frame, and weft remembers hover, focus, animations and last frame's layout so it can tell you what you clicked.",
+      "C bindings let you call weft from C or C++, and golden-image tests compare rendered output against reference PNGs.",
+    ],
+    hardest: "Text took the longest. Fonts, shaping, right-to-left scripts and line breaking make up a field of their own, and I spent hours chasing pixel-level misalignments, like labels sitting a pixel off from the profile pictures beside them.",
+    fun: "I wanted to see how far AI could take a project this big. My goal for weft is a UI library you'd pick on any platform, easy for a beginner and strong enough for a real app. I also had fun naming it: weft stands for \"What Everyone Finally Tries\".",
+    learned: [
+      "I got to see 2D rendering under the libraries everyone else uses: rasterizing paths, antialiasing and blending.",
+      "I learned text rendering end to end, from parsing font files to shaping and right-to-left layout.",
+      "AI agents can carry a large codebase a long way if you steer them, and keeping their work organized takes real planning and review.",
+    ],
+  },
+
   dosely: {
     how: [
       "Dosely is a React single-page app talking to an Express API, with PostgreSQL storing the data. Patients and prescribers sign up as separate account types and land on separate dashboards.",

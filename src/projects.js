@@ -89,6 +89,33 @@ const projects = [
     links: [{ label: "impossiblelevels.com", href: "https://impossiblelevels.com" }],
   },
   {
+    slug: "weft",
+    glyph: "program",
+    category: "other",
+    short: "A UI library from the pixels up. AI wrote most of it, as a test of what LLMs can do.",
+    cover: { image: "/media/weft-gallery.jpg", position: "left top" },
+    name: "weft",
+    version: "early development",
+    tagline: "A Rust UI and 2D graphics library that AI wrote most of, as a test case for recent LLMs. Glint runs on it.",
+    about: [
+      "You can use weft as a plain window with a canvas, like SDL, or as an immediate-mode UI with real layout, styling and animation, like egui or Dear ImGui.",
+      "weft draws everything below the window itself: the rasterizer, font parsing and shaping, right-to-left text and line breaking, the layout engine, widgets, styling and animation. It borrows two pieces. winit opens the window, and softbuffer puts pixels on the screen.",
+      "I built weft as a test case for recent developments in LLMs. I wrote the plan and the codebase rules and reviewed each change, and AI agents wrote most of the code. For that reason I'm keeping the repo private for now.",
+    ],
+    facts: [
+      ["7", "theme presets, each light and dark"],
+      ["318", "commits in its first week"],
+    ],
+    features: [
+      "Rows, columns, stacks and grids, sized by fixed pixels, percentages, grow weights or fit-to-content",
+      "Scroll areas and virtual lists for long content",
+      "Buttons, inputs, sliders, pickers, dropdowns, menus, modals, toasts, tabs, trees, tables, plots, split panes and more",
+      "Per-widget styling with gradients, shadows, hover and press states, and spring animations",
+      "Keyboard shortcuts alongside clicks",
+    ],
+    stack: ["Rust", "winit", "softbuffer"],
+  },
+  {
     slug: "dosely",
     icon: "/media/dosely-icon.png",
     category: "other",
