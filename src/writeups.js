@@ -36,6 +36,23 @@ const writeups = {
     ],
   },
 
+  glint: {
+    how: [
+      "Glint maps each Geometry Dash version to a specific build of the game on Steam. When you install one, Glint runs DepotDownloader with your Steam login to fetch that build, and copies over any files your other instances already have. Each instance gets its own folder with its own saves, settings and mods.",
+      "On Linux Glint runs games through Proton, and on macOS through Wine, which it sets up for you. For versions before 2.2 it installs its own loader, a stand-in for a system DLL like the one Echo 2.1 uses, so .dll mods load without Mega Hack. We built the interface on weft, the UI library I made alongside it with AI.",
+    ],
+    hardest: [
+      "I fought old versions and mods the whole way. Steam's DRM wraps several old releases, and each version has its own rules for how Mega Hack and Echo load. My builds crashed on 2.113, opened Mega Hack for a single frame, or told me Mega Hack wasn't logged in, before I got each combination working.",
+      "I also had to make it feel good. The first versions worked, but I didn't enjoy using them, so I redesigned the UI from scratch more than once.",
+    ],
+    fun: "I loved designing Glint's look: the cardboard-box icon, the gold wordmark, the website, and the feel of clicking around the launcher.",
+    learned: [
+      "I learned how Steam stores and serves old builds, and drove DepotDownloader from inside an app.",
+      "We shipped a desktop app to three operating systems, with Wine and Proton setup, self-updates, and a macOS app that moves itself into Applications.",
+      "I found weft's gaps fast once I built a real app on it.",
+    ],
+  },
+
   "impossible-levels-list": {
     how: [
       "The website runs on a .NET API and PostgreSQL, with a Nuxt (Vue) frontend. Players vote on head-to-head matchups (\"this level is harder than that one\"), and a rating algorithm turns those votes into the order of the list. A level's rank sets its points on an exponential curve, from about 2,500 at #1 down to 10.",
