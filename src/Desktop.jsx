@@ -8,16 +8,39 @@ import "@fontsource/ibm-plex-mono/400.css";
 import "@fontsource/ibm-plex-mono/700.css";
 import "./Stuff.css";
 
+// remembers whether the lamp is on. dark by default, it's only a display setting
+function useLights() {
+  const [on, setOn] = useState(() => {
+    try {
+      return localStorage.getItem("lm.lights") === "on";
+    } catch {
+      return false;
+    }
+  });
+  const toggle = () =>
+    setOn((v) => {
+      try {
+        if (v) localStorage.removeItem("lm.lights");
+        else localStorage.setItem("lm.lights", "on");
+      } catch {
+        // storage blocked, it just won't be remembered
+      }
+      return !v;
+    });
+  return [on, toggle];
+}
+
 // my stuff + project pages: an old desktop with one window open
 export default function Desktop({ title, icon, fit = false, children }) {
+  const [lights, toggleLights] = useLights();
   return (
-    <div className="desktop">
+    <div className="desktop" data-lights={lights ? "on" : "off"}>
       <main className="desktop-area">
         <Window title={title} icon={icon} fit={fit}>
           {children}
         </Window>
       </main>
-      <Taskbar title={title} icon={icon} />
+      <Taskbar title={title} icon={icon} lights={lights} onLights={toggleLights} />
     </div>
   );
 }
@@ -50,7 +73,7 @@ function Clock() {
   return <span className="tray-clock">{now.toLocaleTimeString([], { hour: "numeric", minute: "2-digit" })}</span>;
 }
 
-function Taskbar({ title, icon }) {
+function Taskbar({ title, icon, lights, onLights }) {
   return (
     <nav className="taskbar">
       <Link to="/" className="start-btn">
@@ -67,6 +90,16 @@ function Taskbar({ title, icon }) {
         </span>
       )}
       <span className="tray">
+        <button
+          type="button"
+          className="lamp"
+          onClick={onLights}
+          aria-pressed={lights}
+          title={lights ? "Lights off" : "Lights on"}
+          data-track={lights ? "Lights off" : "Lights on"}
+        >
+          {lights ? "☀" : "☾"}
+        </button>
         <img src={developed_by} alt="Developed By:" className="tray-dev" />
         <img src={nametag} alt="Levi Minton" className="tray-name" />
         <Clock />

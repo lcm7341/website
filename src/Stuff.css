@@ -1,9 +1,27 @@
 
 .desktop {
-  --face: #c3c3c3;
-  --light: #ffffff;
-  --shade: #828282;
-  --dark: #1e1e1e;
+  /* night is the default so coming from the dark home page doesn't blind anyone.
+     the lamp in the taskbar switches to day, the original light colors (Desktop.jsx) */
+  --face: #2a2d36;
+  --face-hover: #343844;
+  --light: #4d5262;
+  --hi2: #3a3e4b;
+  --shade: #16181e;
+  --dark: #050608;
+  --ink: #e4e6ec;
+  --ink-2: #a9adb9;
+  --paper: #13151b;
+  --paper-ink: #d7dae2;
+  --paper-dim: #8d92a0;
+  --rule: #4a4f5c;
+  --accent-ink: #7bd655;
+  --link: #8fb1ff;
+  --close-hover: #ff6b6b;
+  --viewer: #0b0c10;
+  --desk: #0f2e29;
+  --desk-dot: rgba(0, 0, 0, 0.35);
+  --check-a: #3a3e4b;
+  --check-b: #2a2d36;
   --title: linear-gradient(90deg, #14520f, #3f9b1e);
   --chrome: "VT323", ui-monospace, monospace;
   --mono: "IBM Plex Mono", ui-monospace, monospace;
@@ -12,10 +30,33 @@
   display: flex;
   flex-direction: column;
   font-family: var(--chrome);
-  color: #000;
+  color: var(--ink);
   background:
-    radial-gradient(circle at 1px 1px, rgba(0, 0, 0, 0.18) 1px, transparent 0) 0 0 / 3px 3px,
-    #1f5a50;
+    radial-gradient(circle at 1px 1px, var(--desk-dot) 1px, transparent 0) 0 0 / 3px 3px,
+    var(--desk);
+}
+
+.desktop[data-lights="on"] {
+  --face: #c3c3c3;
+  --face-hover: #d4d4d4;
+  --light: #ffffff;
+  --hi2: #dfdfdf;
+  --shade: #828282;
+  --dark: #1e1e1e;
+  --ink: #000;
+  --ink-2: #222;
+  --paper: #fff;
+  --paper-ink: #111;
+  --paper-dim: #555;
+  --rule: #8a8a8a;
+  --accent-ink: #2f7a1c;
+  --link: #1f4fa8;
+  --close-hover: #b00;
+  --viewer: #2b2b2b;
+  --desk: #1f5a50;
+  --desk-dot: rgba(0, 0, 0, 0.18);
+  --check-a: #fff;
+  --check-b: #d0d0d0;
 }
 
 .desktop-area {
@@ -41,7 +82,7 @@
 .task-btn:visited,
 .tb-btn,
 .tb-btn:visited {
-  color: #000;
+  color: var(--ink);
 }
 
 .window,
@@ -54,7 +95,7 @@
     inset -1px -1px var(--dark),
     inset 1px 1px var(--light),
     inset -2px -2px var(--shade),
-    inset 2px 2px #dfdfdf;
+    inset 2px 2px var(--hi2);
 }
 
 .address-field,
@@ -67,7 +108,7 @@
   box-shadow:
     inset -1px -1px var(--light),
     inset 1px 1px var(--shade),
-    inset -2px -2px #dfdfdf,
+    inset -2px -2px var(--hi2),
     inset 2px 2px var(--dark);
 }
 
@@ -118,17 +159,17 @@
   width: 24px;
   height: 21px;
   background: var(--face);
-  color: #000;
+  color: var(--ink);
   font: 400 18px/1 var(--chrome);
 }
 
 .tb-close {
   margin-left: 3px;
-  color: #000;
+  color: var(--ink);
 }
 
 .tb-close:hover {
-  color: #b00;
+  color: var(--close-hover);
 }
 
 .toolbar {
@@ -142,14 +183,14 @@
 .tool-btn {
   padding: 4px 12px;
   background: var(--face);
-  color: #000;
+  color: var(--ink);
   font-size: 1.2rem;
   white-space: nowrap;
 }
 
 .tool-btn:hover {
-  color: #000;
-  background: #d4d4d4;
+  color: var(--ink);
+  background: var(--face-hover);
 }
 
 .tool-btn:active,
@@ -169,14 +210,14 @@
 
 .address-label {
   font-size: 1.15rem;
-  color: #222;
+  color: var(--ink-2);
 }
 
 .address-field {
   flex: 1;
   min-width: 0;
   padding: 4px 8px;
-  background: #fff;
+  background: var(--paper);
   font-family: var(--mono);
   font-size: 0.85rem;
   white-space: nowrap;
@@ -187,7 +228,7 @@
 .explorer {
   margin: 4px 0;
   padding: 1rem 1.2rem 1.4rem;
-  background: #fff;
+  background: var(--paper);
 }
 
 .explorer-group + .explorer-group {
@@ -200,7 +241,7 @@
   gap: 0.5rem;
   margin: 0 0 0.8rem;
   padding-bottom: 0.35rem;
-  border-bottom: 1px dotted #8a8a8a;
+  border-bottom: 1px dotted var(--rule);
   font-family: var(--chrome);
   font-weight: 400;
   font-size: 1.55rem;
@@ -249,12 +290,12 @@
 .icon,
 .icon:visited,
 .icon:hover {
-  color: #000;
+  color: var(--paper-ink);
 }
 
 .icon:focus-visible {
   outline: none;
-  border-color: #000;
+  border-color: var(--paper-ink);
 }
 
 .icon-label {
@@ -365,7 +406,7 @@ span.app-icon {
   list-style: none;
   margin: 0;
   padding: 6px;
-  background: #fff;
+  background: var(--paper);
   align-self: stretch;
 }
 
@@ -377,15 +418,15 @@ span.app-icon {
   padding: 5px 6px;
   border: 1px dotted transparent;
   background: none;
-  color: #000;
+  color: var(--paper-ink);
   font: 400 0.92rem/1.2 var(--mono);
   text-align: left;
   cursor: pointer;
 }
 
 .file:hover {
-  color: #000;
-  border-color: #3f7a2a;
+  color: var(--paper-ink);
+  border-color: var(--accent-ink);
 }
 
 .file-open,
@@ -427,11 +468,11 @@ span.app-icon {
   display: grid;
   place-items: center;
   font: 700 11px/1 var(--mono);
-  color: #1f4fa8;
+  color: var(--link);
 }
 
 .pane {
-  background: #fff;
+  background: var(--paper);
   min-width: 0;
   display: flex;
 }
@@ -449,7 +490,7 @@ span.app-icon {
   font-family: var(--mono);
   font-size: 1rem;
   line-height: 1.7;
-  color: #111;
+  color: var(--paper-ink);
 }
 
 .notepad p {
@@ -464,7 +505,7 @@ span.app-icon {
 }
 
 .np-dim {
-  color: #555 !important;
+  color: var(--paper-dim) !important;
   font-size: 0.9rem !important;
 }
 
@@ -475,14 +516,14 @@ span.app-icon {
   gap: 0.4rem 1.6rem;
   margin: 0.2rem 0 1.2rem;
   padding: 0.8rem 1rem;
-  border: 1px dashed #999;
+  border: 1px dashed var(--rule);
 }
 
 .np-facts b {
   font-family: var(--chrome);
   font-weight: 400;
   font-size: 1.7rem;
-  color: #2f7a1c;
+  color: var(--accent-ink);
 }
 
 .np-list {
@@ -496,7 +537,7 @@ span.app-icon {
 
 .np-list li::marker {
   content: "* ";
-  color: #2f7a1c;
+  color: var(--accent-ink);
 }
 
 .viewer {
@@ -504,7 +545,7 @@ span.app-icon {
   display: grid;
   place-items: center;
   padding: 1rem;
-  background: #2b2b2b;
+  background: var(--viewer);
 }
 
 .viewer .cover {
@@ -565,7 +606,7 @@ span.app-icon {
   height: 42px;
   padding: 4px;
   background: var(--face);
-  box-shadow: inset 0 1px #dfdfdf, inset 0 2px var(--light);
+  box-shadow: inset 0 1px var(--hi2), inset 0 2px var(--light);
 }
 
 .start-btn,
@@ -576,7 +617,7 @@ span.app-icon {
   height: 100%;
   padding: 0 10px;
   background: var(--face);
-  color: #000;
+  color: var(--ink);
   font-size: 1.25rem;
   white-space: nowrap;
 }
@@ -598,11 +639,11 @@ span.app-icon {
 
 .start-btn:hover,
 .task-btn:hover {
-  color: #000;
+  color: var(--ink);
 }
 
 .task-btn-active {
-  background: repeating-conic-gradient(#fff 0 25%, #d0d0d0 0 50%) 0 0 / 2px 2px;
+  background: repeating-conic-gradient(var(--check-a) 0 25%, var(--check-b) 0 50%) 0 0 / 2px 2px;
 }
 
 .tray {
@@ -623,6 +664,27 @@ span.app-icon {
 .tray-name {
   height: 17px;
   width: auto;
+}
+
+.lamp {
+  display: grid;
+  place-items: center;
+  width: 26px;
+  height: 24px;
+  padding: 0;
+  border: 0;
+  background: none;
+  color: var(--ink);
+  font: 400 1.2rem/1 var(--chrome);
+  cursor: pointer;
+}
+
+.lamp:hover {
+  background: var(--face-hover);
+}
+
+.lamp:active {
+  box-shadow: inset 1px 1px var(--dark), inset -1px -1px var(--light);
 }
 
 .tray-clock {

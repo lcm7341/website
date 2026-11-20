@@ -118,16 +118,17 @@ export default function HorizonLevel() {
       return `rgba(170, 255, 110, ${((0.18 + 0.7 * Math.exp(-d * d)) * k).toFixed(3)})`;
     }
 
+    // the sun's light on the floor: a soft pool that fades from green to the grid's blue
     function drawFloorLight(x) {
       x.save();
       x.translate(width / 2, HORIZON);
       x.scale(1, (height - HORIZON) / (width * 0.6));
       const light = x.createRadialGradient(0, 0, 0, 0, 0, width * 0.6);
-      light.addColorStop(0, "rgba(170, 255, 100, 0.34)");
-      light.addColorStop(0.18, "rgba(110, 230, 90, 0.2)");
-      light.addColorStop(0.45, "rgba(60, 170, 190, 0.1)");
-      light.addColorStop(0.75, "rgba(70, 110, 255, 0.05)");
-      light.addColorStop(1, "rgba(70, 110, 255, 0)");
+      light.addColorStop(0, "rgba(150, 245, 90, 0.16)");
+      light.addColorStop(0.2, "rgba(90, 215, 110, 0.09)");
+      light.addColorStop(0.45, "rgba(60, 170, 190, 0.04)");
+      light.addColorStop(0.75, "rgba(70, 110, 230, 0.015)");
+      light.addColorStop(1, "rgba(70, 110, 230, 0)");
       x.fillStyle = light;
       x.fillRect(-width / 2, 0, width, width * 0.6);
       x.restore();

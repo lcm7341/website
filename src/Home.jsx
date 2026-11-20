@@ -3,20 +3,30 @@ import { Link } from "react-router-dom";
 import gd_cube from "./assets/my_cube.png";
 import my_stuff from "./assets/GJ_stuffTxt_001.png";
 import Space from "./Space.jsx";
+import FlyingIcons from "./FlyingIcons.jsx";
 import HorizonLevel from "./horizon/HorizonLevel.jsx";
 import Sign from "./Sign.jsx";
 import SiteFooter from "./SiteFooter.jsx";
+import useSpin from "./useSpin.js";
 import "./Home.css";
 
 function Home() {
   const pageRef = useRef(null);
   const footerRef = useRef(null);
+  const [cubeRef, cubeHover] = useSpin(18, 2.5);
+  const emailRef = useRef(null);
+
+  // the address is put together here so scrapers reading the html don't find it
+  useEffect(() => {
+    const user = ["levi", "minton", "627"].join("");
+    emailRef.current.href = `mailto:${user}@${"gmail"}.com`;
+  }, []);
 
   // on phones the horizon goes where the footer starts so the floor fills the screen, not the sky
   useEffect(() => {
     const page = pageRef.current;
     const footer = footerRef.current;
-    const phone = window.matchMedia("(max-width: 700px)");
+    const phone = window.matchMedia("(max-width: 1100px)");
     let last = "";
     const sync = () => {
       const value = phone.matches ? `${footer.offsetTop}px` : "";
@@ -40,17 +50,12 @@ function Home() {
   return (
     <div className="home-bg" ref={pageRef}>
       <Space />
+      <FlyingIcons />
 
-      {/* my cube as the sun */}
+      {/* my cube sits in front of the pixel sun that Space.jsx draws */}
       <div className="sun">
-        <div className="sun-halo" aria-hidden="true" />
-        <div className="sun-horizon-glow" aria-hidden="true" />
-        <div className="sun-path" aria-hidden="true" />
-        <div className="sun-reflection" aria-hidden="true">
-          <img src={gd_cube} alt="" />
-        </div>
-        <Link to="/stuff" className="sun-cube" aria-label="My Stuff">
-          <img src={gd_cube} alt="My GD Cube" />
+        <Link to="/stuff" className="sun-cube" aria-label="My Stuff" {...cubeHover}>
+          <img src={gd_cube} alt="My GD Cube" ref={cubeRef} />
         </Link>
       </div>
 
@@ -74,24 +79,62 @@ function Home() {
 
       <main className="space">
         <section className="panel">
-          <span className="panel-bracket" aria-hidden="true" />
-          <span className="panel-corner" aria-hidden="true" />
+          <span className="panel-tab" aria-hidden="true">
+            hello.txt
+          </span>
+          <h2 className="hello">Hey, I&apos;m Levi.</h2>
           <p>
-            Hello World! This is my personal website. Here I will make a bunch of
-            stuff that might consist of the following types of things:
+            I&apos;m a junior at Missouri State studying Computer Science with a
+            minor in Math, graduating May 2028.
           </p>
-          <ul>
-            <li>Stuff for class</li>
-            <li>Anything I want to talk about</li>
-            <li>Cool things I made</li>
-          </ul>
           <p>
-            I plan on updating this frequently with new and interesting CSS and
-            HTML stuff I have learned.
+            I like making software that solves my own problems. I would rather
+            spend weeks automating something that takes two minutes than spend two
+            minutes on it every time. I also like building things that help me
+            understand other things, which is how I ended up taking apart Geometry
+            Dash.
           </p>
+          <p>
+            At 15 I made <Link to="/stuff/echo-2-1">Echo</Link>, a replay bot for
+            it, before AI could write code for you. I&apos;ve maintained it for five
+            years, and its Discord has about 7,100 members. I got into
+            programming because my dad was a programmer and I wanted to be like him.
+          </p>
+        </section>
+
+        <section className="panel panel-now">
+          <span className="panel-tab" aria-hidden="true">
+            now.txt
+          </span>
+          <p>
+            I&apos;m looking for internships, part-time or contract work. Any team,
+            any stack, starting whenever. Based in Springfield, MO, and happy to
+            relocate.
+          </p>
+          <p>
+            Outside of code: joking around with my friends and a lot of music.
+          </p>
+          <nav className="links" aria-label="Contact and links">
+            <a href="#" ref={emailRef} data-track="Email">
+              email
+            </a>
+            <a href="https://github.com/lcm7341" target="_blank" rel="noreferrer">
+              github
+            </a>
+            <a href="https://www.linkedin.com/in/leviminton/" target="_blank" rel="noreferrer">
+              linkedin
+            </a>
+            <a href="/levi-minton-resume.pdf" target="_blank" rel="noreferrer">
+              résumé
+            </a>
+            <Link to="/stuff" className="links-main">
+              my stuff →
+            </Link>
+          </nav>
           <p className="subscript">
-            (P.S., this website looks like this on purpose! It's meant to have
+            (P.S., this website looks like this on purpose! It&apos;s meant to have
             personality and not be boring)
+            <span className="cursor" aria-hidden="true" />
           </p>
         </section>
       </main>

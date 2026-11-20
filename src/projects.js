@@ -149,16 +149,16 @@ const projects = [
     stack: ["Rust", "winit", "softbuffer"],
   },
   {
-    slug: "dosely",
-    icon: "/media/dosely-icon.png",
+    slug: "medminder",
+    icon: "/media/medminder-icon.png",
     category: "other",
     short: "Medication tracking for patients, and the people who prescribe for them.",
-    cover: { image: "/media/dosely-home.jpg", position: "center top" },
-    name: "Dosely",
+    cover: { image: "/media/medminder-home.jpg", position: "center top" },
+    name: "MedMinder",
     version: "prototype · made with Alex Linz",
     tagline: "A medication-tracking web app with one side for patients and one for prescribers.",
     about: [
-      "Alex Linz and I built Dosely together. Patients use it to track their prescriptions and log doses. Prescribers use it to manage their patients' medication lists, watch supply and message them.",
+      "Alex Linz and I built MedMinder together. Patients use it to track their prescriptions and log doses. Prescribers use it to manage their patients' medication lists, watch supply and message them.",
       "We built it as a prototype with no real patient data, and it covers the flow from sign-up to weekly adherence reports.",
     ],
     features: [

@@ -81,12 +81,12 @@ const writeups = {
     ],
   },
 
-  dosely: {
+  medminder: {
     how: [
-      "Dosely is a React single-page app talking to an Express API, with PostgreSQL storing the data. Patients and prescribers sign up as separate account types and land on separate dashboards.",
-      "A prescriber adds medications through a form that searches openFDA's drug label database as they type. Each prescription records dose, frequency and supply. Each time a patient logs a dose, Dosely counts the supply down and reads the frequency (daily, every few hours, or as needed) to work out when the next dose is due. A scheduled job sends reminder emails through Mailjet each morning.",
+      "MedMinder is a React single-page app talking to an Express API, with PostgreSQL storing the data. Patients and prescribers sign up as separate account types and land on separate dashboards.",
+      "A prescriber adds medications through a form that searches openFDA's drug label database as they type. Each prescription records dose, frequency and supply. Each time a patient logs a dose, MedMinder counts the supply down and reads the frequency (daily, every few hours, or as needed) to work out when the next dose is due. A scheduled job sends reminder emails through Mailjet each morning.",
     ],
-    hardest: "We spent the most care on security. Dosely handles health information even as a prototype, so we added password hashing, rate limits, security headers and CORS rules, and wrote security and deployment docs.",
+    hardest: "We spent the most care on security. MedMinder handles health information even as a prototype, so we added password hashing, rate limits, security headers and CORS rules, and wrote security and deployment docs.",
     fun: "Building both sides with Alex and watching them connect: a prescriber adds a medication, and it appears on the patient's dashboard, ready to log.",
     learned: [
       "We designed one app for two kinds of users with different permissions.",

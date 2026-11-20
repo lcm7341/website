@@ -26,3 +26,6 @@ dist-ssr
 *.njsproj
 *.sln
 *.sw?
+
+# local analytics data (npm run analytics)
+analytics-data
